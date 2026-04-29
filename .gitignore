@@ -1,3 +1,24 @@
+# =============================================
+# FRAPPE CRM — reguli specifice
+# =============================================
+
+# Date și configurații Frappe (conțin parole, DB, etc.)
+frappe-crm/sites/
+frappe-crm/logs/
+frappe-crm/apps/
+
+# Variabile de mediu (NICIODATĂ în git)
+.env
+.env.*
+!.env.example
+
+# Fișiere sistem macOS
+.DS_Store
+
+# =============================================
+# NODE.JS (reguli originale)
+# =============================================
+
 # Logs
 logs
 *.log

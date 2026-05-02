@@ -75,7 +75,7 @@
    "type": "Link"
   }
  ],
- "modified": "2026-05-02 15:37:55.080741",
+ "modified": "2026-05-02 15:56:59.356187",
  "modified_by": "Administrator",
  "module": "Optimed CRM",
  "name": "Optimed CRM",
@@ -203,6 +203,13 @@
    "link_to": "Operator Performance",
    "report_ref_doctype": "Deal",
    "type": "Report"
+  },
+  {
+   "color": "Red",
+   "doc_view": "",
+   "label": "Contacte azi",
+   "link_to": "contacts-today",
+   "type": "Page"
   }
  ],
  "title": "Optimed CRM"

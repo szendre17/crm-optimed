@@ -1,78 +1,108 @@
-# Etapa 6.1 — Workspace + Number Cards + Charts
+# Etapa 7 — Meniu izolat + Conturi operatori
 
-Construiește Dashboard-ul nativ Frappe cu 12 statistici live, 3 grafice și layout structurat.
+Configurează Optimed CRM ca aplicație izolată: operatorii văd doar Optimed CRM, tu vezi tot dar curat.
 
 ## Conținut
 
 ```
 scripts/
-├── create_number_cards.py    # 1. Creează cele 12 Number Cards
-├── create_charts.py          # 2. Creează cele 3 grafice
-└── create_workspace.py       # 3. Creează Workspace-ul cu layout
+├── create_users.py                  # 1. Creare conturi Ramona, Roxana, Eniko
+├── restrict_system_workspaces.py    # 2. Restricționare CRM, Users, Website, etc.
+├── reorganize_admin_menu.py         # 3. Reorganizare vizuală meniu admin
+└── revert_changes.py                # 4. Recovery (dacă ceva merge prost)
 ```
 
 ## Ordine de rulare (CRITICĂ)
 
-Strict secvențial — fiecare script depinde de cele anterioare:
+Strict secvențial:
 
 ```python
-# Pasul 1: Number Cards (cifrele mari)
-exec(open('/home/frappe/frappe-bench/apps/optimed_crm/scripts/create_number_cards.py').read())
+# Pasul 1: Conturi (PRIMUL — restul scripturilor depind de roluri existente)
+exec(open('/home/frappe/frappe-bench/apps/optimed_crm/scripts/create_users.py').read())
 run()
 
-# Pasul 2: Charts (graficele)
-exec(open('/home/frappe/frappe-bench/apps/optimed_crm/scripts/create_charts.py').read())
+# Pasul 2: Restricționare workspace-uri sistem
+exec(open('/home/frappe/frappe-bench/apps/optimed_crm/scripts/restrict_system_workspaces.py').read())
 run()
 
-# Pasul 3: Workspace (layout-ul care le conține)
-exec(open('/home/frappe/frappe-bench/apps/optimed_crm/scripts/create_workspace.py').read())
+# Pasul 3: Reorganizare meniu admin (opțional dar recomandat)
+exec(open('/home/frappe/frappe-bench/apps/optimed_crm/scripts/reorganize_admin_menu.py').read())
 run()
 
 # După rulare:
 # bench --site [site] clear-cache
+# bench restart
 ```
 
-## Ce vei vedea în interfață
+## CONTURI — Important!
 
-### În meniul stânga
-Apare un nou item: **Optimed CRM** cu icoană dashboard.
+În `create_users.py`, modifică emailurile cu cele reale ÎNAINTE de a rula:
 
-### Pe pagina Dashboard
-- **3 secțiuni** cu Number Cards: Volume, Financiar, Operațional
-- **12 cifre live** care se actualizează automat
-- **3 grafice**: Deal-uri/lună (linie), Venit/operator (bare), Segmente (donut)
-- **Shortcut-uri colorate** sus pentru navigare rapidă
-- **Link-uri** stânga către DocType-uri
+```python
+USERS_TO_CREATE = [
+    {"operator_name": "Ramona", "email": "ramona@optimedtoplita.ro", ...},
+    {"operator_name": "Roxana", "email": "roxana@optimedtoplita.ro", ...},
+    {"operator_name": "Eniko",  "email": "eniko@optimedtoplita.ro", ...},
+]
+```
 
-### Cifrele așteptate
-- Total pacienți: ~9.791
-- Venit total: ~5.206.726 RON
-- Pacienți VIP: ~366
-- Pacienți inactivi: ~2.814
-- Rată conversie: ~44%
+**La rulare**, scriptul va afișa parolele temporare. Salvează-le ÎNAINTE să închizi terminalul!
 
-## Idempotență
+Operatoarele vor fi forțate să-și schimbe parola la prima logare.
 
-Toate scripturile sunt idempotente — le poți rula de mai multe ori.
-- Number Cards existente sunt **actualizate**
-- Workspace existent este **șters și recreat** (cel mai sigur pentru schimbări de layout)
+## Rezultatul final
 
-## Probleme posibile
+### Pentru Ramona/Roxana/Eniko (rolul Optimed Operator):
+```
+🏠 Home
+📊 Optimed CRM
+   ├── Pacienți
+   ├── Programări
+   ├── Deal-uri
+   ├── Operatori (read-only)
+   ├── Contacte azi
+   └── Rapoarte
+```
 
-### "Number Card 'X' lipsă — rulează create_number_cards.py întâi"
-Ai sărit peste pasul 1. Rulează scripturile în ordine.
+### Pentru tine (rolul System Manager):
+```
+🏠 Home
+📊 Optimed CRM         ← primul, mereu vizibil
+📁 Frappe System       ← grupat, colapsibil
+   ├── CRM
+   ├── Users
+   ├── Website
+   ├── Tools
+   ├── Integrations
+   ├── Build
+   └── Settings
+```
 
-### Workspace nu apare în meniu
-- Rulează `bench --site [site] clear-cache`
-- Reîncarcă browser-ul (Ctrl+Shift+R pentru hard refresh)
-- Verifică că ai role-ul `System Manager` (workspace e public deci ar trebui să apară)
+## Test funcțional
 
-### Charts nu se încarcă (rotiță infinită)
-Datele sunt prea mari pentru calcul on-the-fly. Pentru 9.567 deal-uri ar trebui să meargă, dar dacă persistă:
-- Verifică `Error Log` în Frappe
-- Probabil trebuie reconstruit cache-ul: `bench --site [site] build`
+După rulare:
 
-## Limitarea curentă
+1. **Test ca admin (tine):** logare normală, verifică că vezi Optimed CRM + Frappe System
+2. **Test ca operator:** logare cu Ramona (parolă temporară), verifică că vede DOAR Optimed CRM
+3. **Test acces direct URL:** ca operator, încearcă să accesezi `http://localhost:8000/app/user-list` → trebuie să dea Forbidden
 
-**"Pacienți de contactat azi"** este pentru moment un placeholder simplu.
-Calculul exact (2 zile / 15 zile / 6 luni / 1 an post-ridicare) îl construim în Etapa 6.3 cu un Custom Report dedicat.
+## Recovery dacă ceva nu funcționează
+
+Rulează `revert_changes.py`. Restaurează workspace-urile la starea inițială.
+
+Conturile create NU sunt șterse automat — pentru asta, decomentează secțiunea finală în script.
+
+## Securitate
+
+Operatorii NU pot:
+- Accesa Users (creare conturi)
+- Accesa Settings (configurări sistem)
+- Vedea Frappe CRM (workspace-ul original)
+- Modifica DocType-uri (structura aplicației)
+- Accesa Tools (cod custom, etc.)
+
+Operatorii POT:
+- Vedea/edita pacienți, programări, deal-uri
+- Crea Contact Logs (marca contactări)
+- Genera rapoarte și export Excel
+- Modifica propria parolă și profil

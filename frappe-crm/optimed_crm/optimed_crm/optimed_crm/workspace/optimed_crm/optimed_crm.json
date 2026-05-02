@@ -75,7 +75,7 @@
    "type": "Link"
   }
  ],
- "modified": "2026-05-02 15:56:59.356187",
+ "modified": "2026-05-02 16:45:24.193952",
  "modified_by": "Administrator",
  "module": "Optimed CRM",
  "name": "Optimed CRM",
@@ -132,7 +132,17 @@
  "owner": "Administrator",
  "public": 1,
  "quick_lists": [],
- "roles": [],
+ "roles": [
+  {
+   "role": "System Manager"
+  },
+  {
+   "role": "Optimed Operator"
+  },
+  {
+   "role": "Optimed Viewer"
+  }
+ ],
  "sequence_id": 50.0,
  "shortcuts": [
   {

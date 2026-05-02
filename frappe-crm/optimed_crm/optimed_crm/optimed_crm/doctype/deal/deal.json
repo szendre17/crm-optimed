@@ -1,0 +1,349 @@
+{
+ "actions": [],
+ "autoname": "format:DEAL-{#####}",
+ "creation": "2026-05-01 00:00:00",
+ "doctype": "DocType",
+ "engine": "InnoDB",
+ "field_order": [
+  "section_main",
+  "patient",
+  "patient_name_display",
+  "sales_operator",
+  "column_break_main",
+  "creation_date",
+  "pickup_date",
+  "is_paid",
+  "section_components",
+  "frame_price",
+  "lens1_price",
+  "lens2_price",
+  "column_break_components",
+  "sunglasses_price",
+  "accessories_price",
+  "section_discount",
+  "discount_type",
+  "discount_amount",
+  "section_calculated",
+  "revenue",
+  "labor",
+  "column_break_calculated",
+  "commission_base",
+  "commission_percentage_used",
+  "commission_amount",
+  "section_links",
+  "linked_appointment",
+  "installer",
+  "column_break_links",
+  "payment_method",
+  "section_meta",
+  "created_via",
+  "original_source_name",
+  "column_break_meta",
+  "original_deal_name",
+  "original_associated_contact",
+  "section_notes",
+  "notes"
+ ],
+ "fields": [
+  {
+   "fieldname": "section_main",
+   "fieldtype": "Section Break",
+   "label": "Detalii v\u00e2nzare"
+  },
+  {
+   "fieldname": "patient",
+   "fieldtype": "Link",
+   "in_list_view": 1,
+   "in_standard_filter": 1,
+   "label": "Pacient",
+   "options": "Patient",
+   "reqd": 1,
+   "search_index": 1
+  },
+  {
+   "fetch_from": "patient.patient_name",
+   "fieldname": "patient_name_display",
+   "fieldtype": "Data",
+   "in_list_view": 1,
+   "label": "Nume pacient",
+   "read_only": 1
+  },
+  {
+   "fieldname": "sales_operator",
+   "fieldtype": "Link",
+   "in_list_view": 1,
+   "in_standard_filter": 1,
+   "label": "Sales Operator",
+   "options": "Sales Operator",
+   "reqd": 1
+  },
+  {
+   "fieldname": "column_break_main",
+   "fieldtype": "Column Break"
+  },
+  {
+   "default": "Today",
+   "fieldname": "creation_date",
+   "fieldtype": "Date",
+   "in_list_view": 1,
+   "in_standard_filter": 1,
+   "label": "Data emiterii",
+   "reqd": 1
+  },
+  {
+   "fieldname": "pickup_date",
+   "fieldtype": "Date",
+   "label": "Data ridic\u0103rii"
+  },
+  {
+   "default": "0",
+   "fieldname": "is_paid",
+   "fieldtype": "Check",
+   "in_standard_filter": 1,
+   "label": "Pl\u0103tit"
+  },
+  {
+   "fieldname": "section_components",
+   "fieldtype": "Section Break",
+   "label": "Componente v\u00e2nzare (RON)"
+  },
+  {
+   "default": "0",
+   "fieldname": "frame_price",
+   "fieldtype": "Currency",
+   "label": "Pre\u021b ram\u0103",
+   "non_negative": 1,
+   "options": "RON"
+  },
+  {
+   "default": "0",
+   "fieldname": "lens1_price",
+   "fieldtype": "Currency",
+   "label": "Pre\u021b lentil\u0103 1",
+   "non_negative": 1,
+   "options": "RON"
+  },
+  {
+   "default": "0",
+   "fieldname": "lens2_price",
+   "fieldtype": "Currency",
+   "label": "Pre\u021b lentil\u0103 2",
+   "non_negative": 1,
+   "options": "RON"
+  },
+  {
+   "fieldname": "column_break_components",
+   "fieldtype": "Column Break"
+  },
+  {
+   "default": "0",
+   "fieldname": "sunglasses_price",
+   "fieldtype": "Currency",
+   "label": "Pre\u021b ochelari soare",
+   "non_negative": 1,
+   "options": "RON"
+  },
+  {
+   "default": "0",
+   "fieldname": "accessories_price",
+   "fieldtype": "Currency",
+   "label": "Pre\u021b accesorii",
+   "non_negative": 1,
+   "options": "RON"
+  },
+  {
+   "fieldname": "section_discount",
+   "fieldtype": "Section Break",
+   "label": "Reducere"
+  },
+  {
+   "default": "Pre\u021b \u00eentreg",
+   "fieldname": "discount_type",
+   "fieldtype": "Select",
+   "in_standard_filter": 1,
+   "label": "Tip reducere",
+   "options": "Pre\u021b \u00eentreg\nCard 10%\nCard 15%\nRame 10%\nRame 15%\nLentile 10%\nVoucher\nPromo\u021bie special\u0103\nAlt\u0103 reducere"
+  },
+  {
+   "default": "0",
+   "description": "Suma efectiv\u0103 a reducerii \u00een RON. Se scade din total componente pentru a ob\u021bine Venitul.",
+   "fieldname": "discount_amount",
+   "fieldtype": "Currency",
+   "label": "Sum\u0103 reducere",
+   "non_negative": 1,
+   "options": "RON"
+  },
+  {
+   "fieldname": "section_calculated",
+   "fieldtype": "Section Break",
+   "label": "Calcule automate"
+  },
+  {
+   "default": "0",
+   "description": "= (Ram\u0103 + Lentil\u0103 1 + Lentil\u0103 2 + Ochelari soare + Accesorii) - Sum\u0103 reducere",
+   "fieldname": "revenue",
+   "fieldtype": "Currency",
+   "in_list_view": 1,
+   "label": "Venit (RON)",
+   "options": "RON",
+   "read_only": 1
+  },
+  {
+   "default": "0",
+   "description": "Manopera = Diferen\u021ba care nu provine din componente v\u00e2ndute. \u00cen import: preluat\u0103 direct din Excel.",
+   "fieldname": "labor",
+   "fieldtype": "Currency",
+   "label": "Manoper\u0103 (RON)",
+   "options": "RON",
+   "read_only": 1
+  },
+  {
+   "fieldname": "column_break_calculated",
+   "fieldtype": "Column Break"
+  },
+  {
+   "default": "0",
+   "description": "= Venit - Manoper\u0103",
+   "fieldname": "commission_base",
+   "fieldtype": "Currency",
+   "label": "Baz\u0103 comision (RON)",
+   "options": "RON",
+   "read_only": 1
+  },
+  {
+   "default": "1.5",
+   "description": "Procentul folosit pentru calcul (snapshot la momentul deal-ului)",
+   "fieldname": "commission_percentage_used",
+   "fieldtype": "Percent",
+   "label": "Procent comision aplicat",
+   "read_only": 1
+  },
+  {
+   "default": "0",
+   "description": "= Baz\u0103 comision \u00d7 Procent comision aplicat",
+   "fieldname": "commission_amount",
+   "fieldtype": "Currency",
+   "label": "Comision (RON)",
+   "options": "RON",
+   "read_only": 1
+  },
+  {
+   "collapsible": 1,
+   "fieldname": "section_links",
+   "fieldtype": "Section Break",
+   "label": "Leg\u0103turi \u0219i plat\u0103"
+  },
+  {
+   "description": "Programarea care a generat acest deal (op\u021bional)",
+   "fieldname": "linked_appointment",
+   "fieldtype": "Link",
+   "label": "Programare asociat\u0103",
+   "options": "Appointment"
+  },
+  {
+   "fieldname": "installer",
+   "fieldtype": "Link",
+   "label": "Cine a montat",
+   "options": "Sales Operator",
+   "description": "Persoana care a montat ochelarii (poate diferi de cel care a v\u00e2ndut)"
+  },
+  {
+   "fieldname": "column_break_links",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "payment_method",
+   "fieldtype": "Select",
+   "label": "Metod\u0103 plat\u0103",
+   "options": "\nNumerar\nCard\nTransfer bancar\nRate (6 luni f\u0103r\u0103 dob\u00e2nd\u0103)\nMixt"
+  },
+  {
+   "collapsible": 1,
+   "fieldname": "section_meta",
+   "fieldtype": "Section Break",
+   "label": "Metadate import"
+  },
+  {
+   "default": "Manual",
+   "fieldname": "created_via",
+   "fieldtype": "Select",
+   "label": "Surs\u0103 creare",
+   "options": "Manual\nExcel Import\nHubSpot Import\nAPI"
+  },
+  {
+   "fieldname": "original_source_name",
+   "fieldtype": "Data",
+   "label": "Nume surs\u0103 original"
+  },
+  {
+   "fieldname": "column_break_meta",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "original_deal_name",
+   "fieldtype": "Data",
+   "label": "Nume deal original"
+  },
+  {
+   "fieldname": "original_associated_contact",
+   "fieldtype": "Small Text",
+   "label": "Contact asociat original (HubSpot)"
+  },
+  {
+   "collapsible": 1,
+   "fieldname": "section_notes",
+   "fieldtype": "Section Break",
+   "label": "Note"
+  },
+  {
+   "fieldname": "notes",
+   "fieldtype": "Text Editor",
+   "label": "Observa\u021bii"
+  }
+ ],
+ "index_web_pages_for_search": 1,
+ "links": [],
+ "modified": "2026-05-02 12:58:42.422096",
+ "modified_by": "Administrator",
+ "module": "Optimed CRM",
+ "name": "Deal",
+ "naming_rule": "Expression (old style)",
+ "owner": "Administrator",
+ "permissions": [
+  {
+   "create": 1,
+   "delete": 1,
+   "email": 1,
+   "export": 1,
+   "print": 1,
+   "read": 1,
+   "report": 1,
+   "role": "System Manager",
+   "share": 1,
+   "write": 1
+  },
+  {
+   "create": 1,
+   "email": 1,
+   "export": 1,
+   "print": 1,
+   "read": 1,
+   "report": 1,
+   "role": "Optimed Operator",
+   "share": 1,
+   "write": 1
+  },
+  {
+   "read": 1,
+   "report": 1,
+   "role": "Optimed Viewer"
+  }
+ ],
+ "row_format": "Dynamic",
+ "search_fields": "patient,patient_name_display,operator,original_deal_name",
+ "sort_field": "creation_date",
+ "sort_order": "DESC",
+ "states": [],
+ "title_field": "patient_name_display",
+ "track_changes": 1
+}

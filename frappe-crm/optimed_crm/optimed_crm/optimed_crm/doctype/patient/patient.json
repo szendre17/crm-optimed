@@ -1,0 +1,290 @@
+{
+ "actions": [],
+ "allow_rename": 1,
+ "autoname": "format:PAT-{#####}",
+ "creation": "2026-05-01 00:00:00.000000",
+ "doctype": "DocType",
+ "engine": "InnoDB",
+ "field_order": [
+  "section_basic",
+  "patient_name",
+  "phone",
+  "email",
+  "column_break_basic",
+  "birth_date",
+  "is_active",
+  "created_via",
+  "section_segmentation",
+  "segment",
+  "recommended_action",
+  "column_break_segmentation",
+  "days_since_last_activity",
+  "section_appointments",
+  "first_appointment_date",
+  "last_appointment_date",
+  "column_break_appointments",
+  "total_appointments",
+  "cancelled_appointments",
+  "consultation_types",
+  "section_deals",
+  "last_purchase_date",
+  "last_pickup_date",
+  "column_break_deals",
+  "total_purchases",
+  "total_revenue",
+  "total_labor",
+  "section_external_refs",
+  "hubspot_contact_id",
+  "family_group_id",
+  "section_notes",
+  "notes"
+ ],
+ "fields": [
+  {
+   "fieldname": "section_basic",
+   "fieldtype": "Section Break",
+   "label": "Date de bază"
+  },
+  {
+   "fieldname": "patient_name",
+   "fieldtype": "Data",
+   "in_list_view": 1,
+   "in_standard_filter": 1,
+   "label": "Nume complet",
+   "reqd": 1,
+   "search_index": 1
+  },
+  {
+   "fieldname": "phone",
+   "fieldtype": "Data",
+   "in_list_view": 1,
+   "in_standard_filter": 1,
+   "label": "Telefon",
+   "search_index": 1
+  },
+  {
+   "fieldname": "email",
+   "fieldtype": "Data",
+   "in_list_view": 1,
+   "label": "Email",
+   "options": "Email"
+  },
+  {
+   "fieldname": "column_break_basic",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "birth_date",
+   "fieldtype": "Date",
+   "label": "Data nașterii"
+  },
+  {
+   "default": "1",
+   "fieldname": "is_active",
+   "fieldtype": "Check",
+   "in_standard_filter": 1,
+   "label": "Activ"
+  },
+  {
+   "default": "Manual",
+   "fieldname": "created_via",
+   "fieldtype": "Select",
+   "label": "Sursă creare",
+   "options": "Manual\nExcel Import\nCalendly Sync\nHubSpot Import\nAPI"
+  },
+  {
+   "fieldname": "section_segmentation",
+   "fieldtype": "Section Break",
+   "label": "Segmentare"
+  },
+  {
+   "fieldname": "segment",
+   "fieldtype": "Select",
+   "in_list_view": 1,
+   "in_standard_filter": 1,
+   "label": "Segment",
+   "options": "\nVIP\nFidel\nCumpărător nou\nInactiv\nNeconvertit\nDoar contact",
+   "read_only": 1
+  },
+  {
+   "fieldname": "recommended_action",
+   "fieldtype": "Small Text",
+   "label": "Acțiune recomandată",
+   "read_only": 1
+  },
+  {
+   "fieldname": "column_break_segmentation",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "days_since_last_activity",
+   "fieldtype": "Int",
+   "in_list_view": 1,
+   "label": "Zile de la ultima activitate",
+   "read_only": 1
+  },
+  {
+   "collapsible": 1,
+   "fieldname": "section_appointments",
+   "fieldtype": "Section Break",
+   "label": "Programări"
+  },
+  {
+   "fieldname": "first_appointment_date",
+   "fieldtype": "Date",
+   "label": "Prima programare",
+   "read_only": 1
+  },
+  {
+   "fieldname": "last_appointment_date",
+   "fieldtype": "Date",
+   "label": "Ultima programare",
+   "read_only": 1
+  },
+  {
+   "fieldname": "column_break_appointments",
+   "fieldtype": "Column Break"
+  },
+  {
+   "default": "0",
+   "fieldname": "total_appointments",
+   "fieldtype": "Int",
+   "label": "Total programări",
+   "read_only": 1
+  },
+  {
+   "default": "0",
+   "fieldname": "cancelled_appointments",
+   "fieldtype": "Int",
+   "label": "Programări anulate",
+   "read_only": 1
+  },
+  {
+   "fieldname": "consultation_types",
+   "fieldtype": "Small Text",
+   "label": "Tipuri consultații",
+   "read_only": 1
+  },
+  {
+   "collapsible": 1,
+   "fieldname": "section_deals",
+   "fieldtype": "Section Break",
+   "label": "Achiziții"
+  },
+  {
+   "fieldname": "last_purchase_date",
+   "fieldtype": "Date",
+   "label": "Ultima achiziție",
+   "read_only": 1
+  },
+  {
+   "fieldname": "last_pickup_date",
+   "fieldtype": "Date",
+   "label": "Ultima ridicare",
+   "read_only": 1
+  },
+  {
+   "fieldname": "column_break_deals",
+   "fieldtype": "Column Break"
+  },
+  {
+   "default": "0",
+   "fieldname": "total_purchases",
+   "fieldtype": "Int",
+   "in_list_view": 1,
+   "label": "Total achiziții",
+   "read_only": 1
+  },
+  {
+   "default": "0",
+   "fieldname": "total_revenue",
+   "fieldtype": "Currency",
+   "label": "Venit total (RON)",
+   "options": "RON",
+   "read_only": 1
+  },
+  {
+   "default": "0",
+   "fieldname": "total_labor",
+   "fieldtype": "Currency",
+   "label": "Manoperă totală (RON)",
+   "options": "RON",
+   "read_only": 1
+  },
+  {
+   "collapsible": 1,
+   "fieldname": "section_external_refs",
+   "fieldtype": "Section Break",
+   "label": "Referințe externe"
+  },
+  {
+   "fieldname": "hubspot_contact_id",
+   "fieldtype": "Data",
+   "label": "ID Contact HubSpot",
+   "search_index": 1,
+   "unique": 0
+  },
+  {
+   "fieldname": "family_group_id",
+   "fieldtype": "Data",
+   "label": "ID Grup familie",
+   "search_index": 1
+  },
+  {
+   "collapsible": 1,
+   "fieldname": "section_notes",
+   "fieldtype": "Section Break",
+   "label": "Note"
+  },
+  {
+   "fieldname": "notes",
+   "fieldtype": "Text Editor",
+   "label": "Observații"
+  }
+ ],
+ "index_web_pages_for_search": 1,
+ "links": [],
+ "modified": "2026-05-01 00:00:00.000000",
+ "modified_by": "Administrator",
+ "module": "Optimed CRM",
+ "name": "Patient",
+ "naming_rule": "Expression",
+ "owner": "Administrator",
+ "permissions": [
+  {
+   "create": 1,
+   "delete": 1,
+   "email": 1,
+   "export": 1,
+   "print": 1,
+   "read": 1,
+   "report": 1,
+   "role": "System Manager",
+   "share": 1,
+   "write": 1
+  },
+  {
+   "create": 1,
+   "email": 1,
+   "export": 1,
+   "print": 1,
+   "read": 1,
+   "report": 1,
+   "role": "Optimed Operator",
+   "share": 1,
+   "write": 1
+  },
+  {
+   "read": 1,
+   "report": 1,
+   "role": "Optimed Viewer"
+  }
+ ],
+ "search_fields": "patient_name,phone,email,hubspot_contact_id",
+ "show_title_field_in_link": 1,
+ "sort_field": "modified",
+ "sort_order": "DESC",
+ "states": [],
+ "title_field": "patient_name",
+ "track_changes": 1
+}

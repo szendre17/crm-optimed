@@ -1,0 +1,204 @@
+{
+ "actions": [],
+ "allow_rename": 0,
+ "autoname": "format:APP-{#####}",
+ "creation": "2026-05-01 00:00:00.000000",
+ "doctype": "DocType",
+ "engine": "InnoDB",
+ "field_order": [
+  "section_main",
+  "patient",
+  "patient_name_display",
+  "appointment_datetime",
+  "column_break_main",
+  "consultation_type",
+  "attended",
+  "section_cancellation",
+  "is_cancelled",
+  "cancellation_reason",
+  "section_link_deal",
+  "linked_deal",
+  "has_purchase",
+  "section_meta",
+  "created_via",
+  "calendly_event_id",
+  "original_name",
+  "column_break_meta",
+  "notes"
+ ],
+ "fields": [
+  {
+   "fieldname": "section_main",
+   "fieldtype": "Section Break",
+   "label": "Programare"
+  },
+  {
+   "fieldname": "patient",
+   "fieldtype": "Link",
+   "in_list_view": 1,
+   "in_standard_filter": 1,
+   "label": "Pacient",
+   "options": "Patient",
+   "reqd": 1,
+   "search_index": 1
+  },
+  {
+   "fetch_from": "patient.patient_name",
+   "fieldname": "patient_name_display",
+   "fieldtype": "Data",
+   "in_list_view": 1,
+   "label": "Nume pacient",
+   "read_only": 1
+  },
+  {
+   "fieldname": "appointment_datetime",
+   "fieldtype": "Datetime",
+   "in_list_view": 1,
+   "in_standard_filter": 1,
+   "label": "Data și ora programării",
+   "reqd": 1,
+   "search_index": 1
+  },
+  {
+   "fieldname": "column_break_main",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "consultation_type",
+   "fieldtype": "Select",
+   "in_list_view": 1,
+   "in_standard_filter": 1,
+   "label": "Tip consultație",
+   "options": "\nConsultație cu bilet de trimitere (gratuită)\nConsultație cu plată\nControl anual\nVerificare ochelari\nProbă lentile contact\nUrgență\nAltul",
+   "reqd": 1
+  },
+  {
+   "default": "0",
+   "fieldname": "attended",
+   "fieldtype": "Check",
+   "in_list_view": 1,
+   "label": "A venit"
+  },
+  {
+   "collapsible": 1,
+   "collapsible_depends_on": "eval:!doc.is_cancelled",
+   "fieldname": "section_cancellation",
+   "fieldtype": "Section Break",
+   "label": "Anulare"
+  },
+  {
+   "default": "0",
+   "fieldname": "is_cancelled",
+   "fieldtype": "Check",
+   "in_standard_filter": 1,
+   "label": "Anulată"
+  },
+  {
+   "depends_on": "is_cancelled",
+   "fieldname": "cancellation_reason",
+   "fieldtype": "Small Text",
+   "label": "Motiv anulare",
+   "mandatory_depends_on": "is_cancelled"
+  },
+  {
+   "collapsible": 1,
+   "fieldname": "section_link_deal",
+   "fieldtype": "Section Break",
+   "label": "Achiziție asociată"
+  },
+  {
+   "description": "Deal-ul (vânzarea) asociat acestei programări — se completează când pacientul cumpără în urma consultației",
+   "fieldname": "linked_deal",
+   "fieldtype": "Link",
+   "label": "Deal asociat",
+   "options": "Deal"
+  },
+  {
+   "default": "0",
+   "fieldname": "has_purchase",
+   "fieldtype": "Check",
+   "label": "A cumpărat",
+   "read_only": 1
+  },
+  {
+   "collapsible": 1,
+   "fieldname": "section_meta",
+   "fieldtype": "Section Break",
+   "label": "Metadate"
+  },
+  {
+   "default": "Manual",
+   "fieldname": "created_via",
+   "fieldtype": "Select",
+   "label": "Sursă creare",
+   "options": "Manual\nExcel Import\nCalendly Sync\nAPI"
+  },
+  {
+   "description": "ID-ul evenimentului din Calendly — folosit pentru deduplicare la sincronizare",
+   "fieldname": "calendly_event_id",
+   "fieldtype": "Data",
+   "label": "ID eveniment Calendly",
+   "search_index": 1,
+   "unique": 0
+  },
+  {
+   "description": "Numele așa cum apărea în Calendly înainte de import — pentru audit",
+   "fieldname": "original_name",
+   "fieldtype": "Data",
+   "label": "Nume original Calendly"
+  },
+  {
+   "fieldname": "column_break_meta",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "notes",
+   "fieldtype": "Text Editor",
+   "label": "Observații"
+  }
+ ],
+ "index_web_pages_for_search": 1,
+ "links": [],
+ "modified": "2026-05-01 00:00:00.000000",
+ "modified_by": "Administrator",
+ "module": "Optimed CRM",
+ "name": "Appointment",
+ "naming_rule": "Expression",
+ "owner": "Administrator",
+ "permissions": [
+  {
+   "create": 1,
+   "delete": 1,
+   "email": 1,
+   "export": 1,
+   "print": 1,
+   "read": 1,
+   "report": 1,
+   "role": "System Manager",
+   "share": 1,
+   "write": 1
+  },
+  {
+   "create": 1,
+   "email": 1,
+   "export": 1,
+   "print": 1,
+   "read": 1,
+   "report": 1,
+   "role": "Optimed Operator",
+   "share": 1,
+   "write": 1
+  },
+  {
+   "read": 1,
+   "report": 1,
+   "role": "Optimed Viewer"
+  }
+ ],
+ "search_fields": "patient,patient_name_display,calendly_event_id",
+ "sort_field": "appointment_datetime",
+ "sort_order": "DESC",
+ "states": [],
+ "title_field": "patient_name_display",
+ "track_changes": 1
+}

@@ -1,0 +1,142 @@
+{
+ "actions": [],
+ "allow_rename": 1,
+ "autoname": "field:operator_name",
+ "creation": "2026-05-01 00:00:00.000000",
+ "doctype": "DocType",
+ "engine": "InnoDB",
+ "field_order": [
+  "section_main",
+  "operator_name",
+  "is_active",
+  "column_break_main",
+  "commission_percentage",
+  "section_contact",
+  "email",
+  "phone",
+  "column_break_contact",
+  "linked_user",
+  "section_notes",
+  "notes"
+ ],
+ "fields": [
+  {
+   "fieldname": "section_main",
+   "fieldtype": "Section Break"
+  },
+  {
+   "description": "Numele operatorului (ex: Ramona, Roxana, Eniko). Se folose\u0219te ca identificator unic.",
+   "fieldname": "operator_name",
+   "fieldtype": "Data",
+   "in_list_view": 1,
+   "label": "Nume operator",
+   "reqd": 1,
+   "unique": 1
+  },
+  {
+   "default": "1",
+   "fieldname": "is_active",
+   "fieldtype": "Check",
+   "in_list_view": 1,
+   "in_standard_filter": 1,
+   "label": "Activ"
+  },
+  {
+   "fieldname": "column_break_main",
+   "fieldtype": "Column Break"
+  },
+  {
+   "default": "1.5",
+   "description": "Procentul de comision aplicat la baza de comision (Venit - Manoper\u0103). Modificabil per operator.",
+   "fieldname": "commission_percentage",
+   "fieldtype": "Percent",
+   "in_list_view": 1,
+   "label": "Procent comision",
+   "non_negative": 1,
+   "reqd": 1
+  },
+  {
+   "fieldname": "section_contact",
+   "fieldtype": "Section Break",
+   "label": "Date de contact"
+  },
+  {
+   "fieldname": "email",
+   "fieldtype": "Data",
+   "label": "Email",
+   "options": "Email"
+  },
+  {
+   "fieldname": "phone",
+   "fieldtype": "Data",
+   "label": "Telefon",
+   "options": "Phone"
+  },
+  {
+   "fieldname": "column_break_contact",
+   "fieldtype": "Column Break"
+  },
+  {
+   "description": "Contul de utilizator Frappe asociat (op\u021bional) \u2014 pentru permisiuni de tip 'fiecare operator vede doar deal-urile lui'",
+   "fieldname": "linked_user",
+   "fieldtype": "Link",
+   "label": "Cont utilizator asociat",
+   "options": "User"
+  },
+  {
+   "collapsible": 1,
+   "fieldname": "section_notes",
+   "fieldtype": "Section Break",
+   "label": "Note"
+  },
+  {
+   "fieldname": "notes",
+   "fieldtype": "Text",
+   "label": "Observa\u021bii"
+  }
+ ],
+ "index_web_pages_for_search": 1,
+ "links": [
+  {
+   "group": "Activitate",
+   "link_doctype": "Deal",
+   "link_fieldname": "operator"
+  }
+ ],
+ "modified": "2026-05-01 00:00:00.000000",
+ "modified_by": "Administrator",
+ "module": "Optimed CRM",
+ "name": "Sales Operator",
+ "naming_rule": "By fieldname",
+ "owner": "Administrator",
+ "permissions": [
+  {
+   "create": 1,
+   "delete": 1,
+   "email": 1,
+   "export": 1,
+   "print": 1,
+   "read": 1,
+   "report": 1,
+   "role": "System Manager",
+   "share": 1,
+   "write": 1
+  },
+  {
+   "read": 1,
+   "report": 1,
+   "role": "Optimed Operator"
+  },
+  {
+   "read": 1,
+   "report": 1,
+   "role": "Optimed Viewer"
+  }
+ ],
+ "search_fields": "operator_name,email,phone",
+ "sort_field": "operator_name",
+ "sort_order": "ASC",
+ "states": [],
+ "title_field": "operator_name",
+ "track_changes": 1
+}

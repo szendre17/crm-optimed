@@ -31,6 +31,22 @@ bench new-site crm.localhost \
     --no-mariadb-socket
 
 bench --site crm.localhost install-app crm
+
+# Install optimed_crm from workspace (symlink keeps code editable on host)
+if [ -d "/workspace/optimed_crm" ]; then
+    ln -sf /workspace/optimed_crm /home/frappe/frappe-bench/apps/optimed_crm
+    uv pip install --quiet -e /home/frappe/frappe-bench/apps/optimed_crm \
+        --python /home/frappe/frappe-bench/env/bin/python
+    # Register app in apps.txt (bench install-app requires this)
+    APPS_TXT=/home/frappe/frappe-bench/sites/apps.txt
+    if ! grep -qx "optimed_crm" "$APPS_TXT"; then
+        # Ensure file ends with newline before appending
+        [ -n "$(tail -c 1 "$APPS_TXT")" ] && echo "" >> "$APPS_TXT"
+        echo "optimed_crm" >> "$APPS_TXT"
+    fi
+    bench --site crm.localhost install-app optimed_crm
+fi
+
 bench --site crm.localhost set-config developer_mode 1
 bench --site crm.localhost set-config mute_emails 1
 bench --site crm.localhost set-config server_script_enabled 1

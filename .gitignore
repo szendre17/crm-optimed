@@ -7,6 +7,21 @@ frappe-crm/sites/
 frappe-crm/logs/
 frappe-crm/apps/
 
+# Date Excel originale cu pacienți (GDPR — NU pe GitHub public)
+*.xlsx
+*.xls
+
+# Python cache
+__pycache__/
+*.py[cod]
+*$py.class
+*.egg-info/
+
+# Build artefacts pentru optimed_crm app
+frappe-crm/optimed_crm/optimed_crm/public/dist/
+frappe-crm/optimed_crm/.git/
+frappe-crm/optimed_crm/*.egg-info/
+
 # Variabile de mediu (NICIODATĂ în git)
 .env
 .env.*

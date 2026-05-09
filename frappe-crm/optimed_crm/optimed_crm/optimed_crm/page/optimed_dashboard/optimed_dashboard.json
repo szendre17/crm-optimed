@@ -1,0 +1,22 @@
+{
+ "content": "",
+ "creation": "2026-05-09 00:00:00.000000",
+ "doctype": "Page",
+ "idx": 0,
+ "modified": "2026-05-09 00:00:00.000000",
+ "modified_by": "Administrator",
+ "module": "Optimed CRM",
+ "name": "optimed-dashboard",
+ "owner": "Administrator",
+ "page_name": "optimed-dashboard",
+ "roles": [
+  {"role": "System Manager"},
+  {"role": "Optimed Operator"},
+  {"role": "Optimed Viewer"}
+ ],
+ "script": "",
+ "standard": "Yes",
+ "style": "",
+ "system_page": 0,
+ "title": "Dashboard Optimed"
+}

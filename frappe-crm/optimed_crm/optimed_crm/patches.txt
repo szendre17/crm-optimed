@@ -2,3 +2,4 @@
 
 [post_model_sync]
 optimed_crm.patches.v1_0.add_do_not_contact_field
+optimed_crm.patches.v1_1.add_logo_to_settings

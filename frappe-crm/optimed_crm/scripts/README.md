@@ -1,108 +1,109 @@
-# Etapa 7 — Meniu izolat + Conturi operatori
+# Etapa 8.2 — Frontend Dashboard hibrid
 
-Configurează Optimed CRM ca aplicație izolată: operatorii văd doar Optimed CRM, tu vezi tot dar curat.
+UI-ul nou pentru Dashboard care apelează API-ul din 8.1 și afișează vizualizare per rol.
 
 ## Conținut
 
 ```
+optimed_crm/optimed_crm/
+├── page/optimed_dashboard/         # Pagina nouă cu UI custom
+│   ├── __init__.py
+│   ├── optimed_dashboard.json      # Definiție pagină
+│   ├── optimed_dashboard.py        # Backend (gol)
+│   ├── optimed_dashboard.css       # Stiluri custom
+│   └── optimed_dashboard.js        # JS — apelează API + render
+├── patches.txt                     # Listă patch-uri (UPDATE — adaugă v1_1)
+└── patches/v1_1/
+    └── add_logo_to_settings.py     # Patch pentru câmp logo
+
 scripts/
-├── create_users.py                  # 1. Creare conturi Ramona, Roxana, Eniko
-├── restrict_system_workspaces.py    # 2. Restricționare CRM, Users, Website, etc.
-├── reorganize_admin_menu.py         # 3. Reorganizare vizuală meniu admin
-└── revert_changes.py                # 4. Recovery (dacă ceva merge prost)
+├── README.md
+├── install_dashboard.py            # Script principal — workspace + landing
+└── patch_dashboard_stats_for_logo.py  # Patch automat pentru API
 ```
 
-## Ordine de rulare (CRITICĂ)
+## Ce face Dashboard-ul nou
 
-Strict secvențial:
+### Pentru tine (admin)
+- 4 shortcut-uri sus (De contactat, Programări, Deals, Cumpărători noi)
+- **Performanța firmei** — Venit, Comision, Manoperă, Top operator
+- **Status comision firmă** (banner colorat 91% / 75.000 RON)
+- **Pacienți** + **Conversie** (mare, centrată)
+- **Total** — secțiune cu 6 metrici globale
 
-```python
-# Pasul 1: Conturi (PRIMUL — restul scripturilor depind de roluri existente)
-exec(open('/home/frappe/frappe-bench/apps/optimed_crm/scripts/create_users.py').read())
+### Pentru operator (Ramona/Roxana/Eniko)
+- 4 shortcut-uri sus (la fel)
+- **Performanța TA** (mov, evidențiat) — Venitul TĂU, Comisionul TĂU, Manopera TA
+- **Performanța firmei** (gri, neutru) — Venit, Comision, Manoperă (FĂRĂ Top operator)
+- **Status comision firmă** (la fel)
+- **Pacienți** + **Conversie**
+- ❌ Secțiunea Total nu e vizibilă
+
+## Funcționalități
+
+✅ **Auto-refresh la 5 minute** — datele se actualizează singure
+✅ **Buton Refresh manual** — sus dreapta, lângă dată
+✅ **Logo customizabil** — upload prin Optimed CRM Settings
+✅ **Greeting personalizat** — "Bună dimineața, Ramona"
+✅ **Format românesc pentru numere** — 5.206.726 RON (separator românesc)
+✅ **Mobile responsive** — funcționează și pe mobil
+✅ **Click pe shortcut-uri** → te duce la pagina/lista relevantă
+
+## Instalare
+
+```bash
+# 1. Plasare fișiere
+# Copiază optimed_crm/* peste apps/optimed_crm/optimed_crm/
+# Copiază scripts/*.py în apps/optimed_crm/scripts/
+
+# IMPORTANT — patches.txt va fi suprascris (e versiune nouă cu v1_1)
+
+# 2. Patch automat dashboard_stats.py (adaugă logo_url în răspuns)
+docker exec -it [container] python3 /home/frappe/frappe-bench/apps/optimed_crm/scripts/patch_dashboard_stats_for_logo.py
+
+# 3. Migrare (creează pagina + aplică patch logo)
+docker exec -it [container] bench --site [site] migrate
+
+# 4. Instalare dashboard (workspace replacement + landing setup)
+docker exec -it [container] bench --site [site] console
+exec(open('/home/frappe/frappe-bench/apps/optimed_crm/scripts/install_dashboard.py').read())
 run()
+exit()
 
-# Pasul 2: Restricționare workspace-uri sistem
-exec(open('/home/frappe/frappe-bench/apps/optimed_crm/scripts/restrict_system_workspaces.py').read())
-run()
-
-# Pasul 3: Reorganizare meniu admin (opțional dar recomandat)
-exec(open('/home/frappe/frappe-bench/apps/optimed_crm/scripts/reorganize_admin_menu.py').read())
-run()
-
-# După rulare:
-# bench --site [site] clear-cache
-# bench restart
+# 5. Clear cache + restart
+docker exec -it [container] bench --site [site] clear-cache
+docker exec -it [container] bench restart
 ```
 
-## CONTURI — Important!
+## Logo upload
 
-În `create_users.py`, modifică emailurile cu cele reale ÎNAINTE de a rula:
-
-```python
-USERS_TO_CREATE = [
-    {"operator_name": "Ramona", "email": "ramona@optimedtoplita.ro", ...},
-    {"operator_name": "Roxana", "email": "roxana@optimedtoplita.ro", ...},
-    {"operator_name": "Eniko",  "email": "eniko@optimedtoplita.ro", ...},
-]
-```
-
-**La rulare**, scriptul va afișa parolele temporare. Salvează-le ÎNAINTE să închizi terminalul!
-
-Operatoarele vor fi forțate să-și schimbe parola la prima logare.
-
-## Rezultatul final
-
-### Pentru Ramona/Roxana/Eniko (rolul Optimed Operator):
-```
-🏠 Home
-📊 Optimed CRM
-   ├── Pacienți
-   ├── Programări
-   ├── Deal-uri
-   ├── Operatori (read-only)
-   ├── Contacte azi
-   └── Rapoarte
-```
-
-### Pentru tine (rolul System Manager):
-```
-🏠 Home
-📊 Optimed CRM         ← primul, mereu vizibil
-📁 Frappe System       ← grupat, colapsibil
-   ├── CRM
-   ├── Users
-   ├── Website
-   ├── Tools
-   ├── Integrations
-   ├── Build
-   └── Settings
-```
+După instalare:
+1. Accesează: `http://localhost:8000/app/optimed-crm-settings`
+2. Câmpul "Logo Optimed" — click pentru upload
+3. Selectează PNG sau JPG (recomandat: PNG transparent ~200x200px)
+4. Salvează
+5. Reîncarcă Dashboard-ul → logo-ul apare sus stânga
 
 ## Test funcțional
 
-După rulare:
+### Ca admin:
+1. Login → ar trebui să fii pe /app/optimed-crm
+2. Click pe butonul "Deschide Dashboard Optimed →"
+3. Vezi toate secțiunile inclusiv Total
+4. Click pe shortcut "De contactat" → te duce la /app/contacts-today
+5. Click Refresh → datele se actualizează
 
-1. **Test ca admin (tine):** logare normală, verifică că vezi Optimed CRM + Frappe System
-2. **Test ca operator:** logare cu Ramona (parolă temporară), verifică că vede DOAR Optimed CRM
-3. **Test acces direct URL:** ca operator, încearcă să accesezi `http://localhost:8000/app/user-list` → trebuie să dea Forbidden
+### Ca Ramona:
+1. Login → te duce automat la workspace Optimed CRM
+2. Click pe Dashboard
+3. Vezi "Performanța TA" cu cifrele Ramonei
+4. NU vezi Top operator
+5. NU vezi secțiunea Total
 
-## Recovery dacă ceva nu funcționează
+## Limitarea curentă
 
-Rulează `revert_changes.py`. Restaurează workspace-urile la starea inițială.
+Auto-redirect ÎN TIMPUL LOGIN-ULUI nu se face direct la /app/optimed-dashboard
+(workspace-ul Optimed CRM e landing-ul, dar utilizatorul vede butonul redirect).
 
-Conturile create NU sunt șterse automat — pentru asta, decomentează secțiunea finală în script.
-
-## Securitate
-
-Operatorii NU pot:
-- Accesa Users (creare conturi)
-- Accesa Settings (configurări sistem)
-- Vedea Frappe CRM (workspace-ul original)
-- Modifica DocType-uri (structura aplicației)
-- Accesa Tools (cod custom, etc.)
-
-Operatorii POT:
-- Vedea/edita pacienți, programări, deal-uri
-- Crea Contact Logs (marca contactări)
-- Genera rapoarte și export Excel
-- Modifica propria parolă și profil
+Pentru auto-redirect 100% (fără click), e o modificare suplimentară în hooks.py.
+Pentru moment merge varianta cu buton — e mai sigur și clar pentru utilizator.

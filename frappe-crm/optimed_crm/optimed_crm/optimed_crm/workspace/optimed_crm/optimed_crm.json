@@ -1,20 +1,7 @@
 {
- "charts": [
-  {
-   "chart_name": "Deal-uri pe lun\u0103",
-   "label": "Deal-uri pe lun\u0103"
-  },
-  {
-   "chart_name": "Venit pe operator",
-   "label": "Venit pe operator"
-  },
-  {
-   "chart_name": "Distribu\u021bie segmente",
-   "label": "Distribu\u021bie segmente"
-  }
- ],
- "content": "[{\"id\": \"hdr_title\", \"type\": \"header\", \"data\": {\"text\": \"<span class=\\\"h4\\\"><b>Optimed CRM \\u2014 Dashboard</b></span>\", \"col\": 12}}, {\"id\": \"sp1\", \"type\": \"spacer\", \"data\": {\"col\": 12}}, {\"id\": \"hdr_shortcuts\", \"type\": \"header\", \"data\": {\"text\": \"<span class=\\\"h6\\\"><b>Acces rapid</b></span>\", \"col\": 12}}, {\"id\": \"sc_1\", \"type\": \"shortcut\", \"data\": {\"shortcut_name\": \"To\\u021bi pacien\\u021bii\", \"col\": 3}}, {\"id\": \"sc_2\", \"type\": \"shortcut\", \"data\": {\"shortcut_name\": \"Toate deal-urile\", \"col\": 3}}, {\"id\": \"sc_3\", \"type\": \"shortcut\", \"data\": {\"shortcut_name\": \"Toate program\\u0103rile\", \"col\": 3}}, {\"id\": \"sc_4\", \"type\": \"shortcut\", \"data\": {\"shortcut_name\": \"Pacien\\u021bi VIP\", \"col\": 3}}, {\"id\": \"sc_5\", \"type\": \"shortcut\", \"data\": {\"shortcut_name\": \"Pacien\\u021bi Fideli\", \"col\": 3}}, {\"id\": \"sc_6\", \"type\": \"shortcut\", \"data\": {\"shortcut_name\": \"Cump\\u0103r\\u0103tori noi\", \"col\": 3}}, {\"id\": \"sc_7\", \"type\": \"shortcut\", \"data\": {\"shortcut_name\": \"Pacien\\u021bi Inactivi (Reactivare)\", \"col\": 3}}, {\"id\": \"sc_8\", \"type\": \"shortcut\", \"data\": {\"shortcut_name\": \"Pacien\\u021bi Neconverti\\u021bi (Apel direct)\", \"col\": 3}}, {\"id\": \"sc_9\", \"type\": \"shortcut\", \"data\": {\"shortcut_name\": \"Performan\\u021b\\u0103 operatori\", \"col\": 3}}, {\"id\": \"sp_after_shortcuts\", \"type\": \"spacer\", \"data\": {\"col\": 12}}, {\"id\": \"hdr_volume\", \"type\": \"header\", \"data\": {\"text\": \"<span class=\\\"h6\\\"><b>Volume</b></span>\", \"col\": 12}}, {\"id\": \"nc_1\", \"type\": \"number_card\", \"data\": {\"number_card_name\": \"Total pacien\\u021bi\", \"col\": 3}}, {\"id\": \"nc_2\", \"type\": \"number_card\", \"data\": {\"number_card_name\": \"Pacien\\u021bi activi (sub 1 an)\", \"col\": 3}}, {\"id\": \"nc_3\", \"type\": \"number_card\", \"data\": {\"number_card_name\": \"Program\\u0103ri viitoare\", \"col\": 3}}, {\"id\": \"nc_4\", \"type\": \"number_card\", \"data\": {\"number_card_name\": \"Deal-uri luna curent\\u0103\", \"col\": 3}}, {\"id\": \"sp2\", \"type\": \"spacer\", \"data\": {\"col\": 12}}, {\"id\": \"hdr_financial\", \"type\": \"header\", \"data\": {\"text\": \"<span class=\\\"h6\\\"><b>Financiar</b></span>\", \"col\": 12}}, {\"id\": \"nc_5\", \"type\": \"number_card\", \"data\": {\"number_card_name\": \"Venit total (RON)\", \"col\": 3}}, {\"id\": \"nc_6\", \"type\": \"number_card\", \"data\": {\"number_card_name\": \"Venit luna curent\\u0103 (RON)\", \"col\": 3}}, {\"id\": \"nc_7\", \"type\": \"number_card\", \"data\": {\"number_card_name\": \"Comision total operatori (RON)\", \"col\": 3}}, {\"id\": \"nc_8\", \"type\": \"number_card\", \"data\": {\"number_card_name\": \"Manoper\\u0103 total\\u0103 (RON)\", \"col\": 3}}, {\"id\": \"sp3\", \"type\": \"spacer\", \"data\": {\"col\": 12}}, {\"id\": \"hdr_operational\", \"type\": \"header\", \"data\": {\"text\": \"<span class=\\\"h6\\\"><b>Opera\\u021bional</b></span>\", \"col\": 12}}, {\"id\": \"nc_9\", \"type\": \"number_card\", \"data\": {\"number_card_name\": \"Pacien\\u021bi de contactat azi\", \"col\": 3}}, {\"id\": \"nc_10\", \"type\": \"number_card\", \"data\": {\"number_card_name\": \"Pacien\\u021bi inactivi (peste 365 zile)\", \"col\": 3}}, {\"id\": \"nc_11\", \"type\": \"number_card\", \"data\": {\"number_card_name\": \"Pacien\\u021bi VIP\", \"col\": 3}}, {\"id\": \"nc_12\", \"type\": \"number_card\", \"data\": {\"number_card_name\": \"Rat\\u0103 conversie (% pacien\\u021bi cu deal)\", \"col\": 3}}, {\"id\": \"sp4\", \"type\": \"spacer\", \"data\": {\"col\": 12}}, {\"id\": \"hdr_charts\", \"type\": \"header\", \"data\": {\"text\": \"<span class=\\\"h6\\\"><b>Grafice</b></span>\", \"col\": 12}}, {\"id\": \"ch_1\", \"type\": \"chart\", \"data\": {\"chart_name\": \"Deal-uri pe lun\\u0103\", \"col\": 12}}, {\"id\": \"ch_2\", \"type\": \"chart\", \"data\": {\"chart_name\": \"Venit pe operator\", \"col\": 6}}, {\"id\": \"ch_3\", \"type\": \"chart\", \"data\": {\"chart_name\": \"Distribu\\u021bie segmente\", \"col\": 6}}]",
- "creation": "2026-05-02 15:37:55.080741",
+ "charts": [],
+ "content": "[{\"id\": \"header_redirect\", \"type\": \"header\", \"data\": {\"text\": \"<span class=\\\"h4\\\"><b>Optimed CRM</b></span>\", \"col\": 12}}, {\"id\": \"spacer1\", \"type\": \"spacer\", \"data\": {\"col\": 12}}, {\"id\": \"redirect_html\", \"type\": \"header\", \"data\": {\"text\": \"<div style=\\\"text-align: center; padding: 40px;\\\"><a href=\\\"/app/optimed-dashboard\\\" class=\\\"btn btn-primary\\\" style=\\\"font-size: 16px; padding: 12px 24px;\\\">Deschide Dashboard Optimed \\u2192</a><p style=\\\"color: #888; margin-top: 16px;\\\">Sau folose\\u0219te meniul lateral pentru navigare direct\\u0103</p></div>\", \"col\": 12}}]",
+ "creation": "2026-05-09 14:57:05.356253",
  "custom_blocks": [],
  "docstatus": 0,
  "doctype": "Workspace",
@@ -28,8 +15,8 @@
   {
    "hidden": 0,
    "is_query_report": 0,
-   "label": "Date de baz\u0103",
-   "link_count": 4,
+   "label": "Date",
+   "link_count": 5,
    "link_type": "DocType",
    "onboard": 0,
    "type": "Card Break"
@@ -57,7 +44,7 @@
   {
    "hidden": 0,
    "is_query_report": 0,
-   "label": "Deal-uri",
+   "label": "Deals",
    "link_count": 0,
    "link_to": "Deal",
    "link_type": "DocType",
@@ -67,68 +54,146 @@
   {
    "hidden": 0,
    "is_query_report": 0,
-   "label": "Sales Operators",
+   "label": "Contact Log",
+   "link_count": 0,
+   "link_to": "Contact Log",
+   "link_type": "DocType",
+   "onboard": 0,
+   "type": "Link"
+  },
+  {
+   "hidden": 0,
+   "is_query_report": 0,
+   "label": "Sales Operator",
    "link_count": 0,
    "link_to": "Sales Operator",
    "link_type": "DocType",
    "onboard": 0,
    "type": "Link"
+  },
+  {
+   "hidden": 0,
+   "is_query_report": 0,
+   "label": "Ac\u021biuni zilnice",
+   "link_count": 1,
+   "link_type": "DocType",
+   "onboard": 0,
+   "type": "Card Break"
+  },
+  {
+   "hidden": 0,
+   "is_query_report": 0,
+   "label": "Contacte azi",
+   "link_count": 0,
+   "link_to": "contacts-today",
+   "link_type": "Page",
+   "onboard": 0,
+   "type": "Link"
+  },
+  {
+   "hidden": 0,
+   "is_query_report": 0,
+   "label": "Rapoarte",
+   "link_count": 7,
+   "link_type": "DocType",
+   "onboard": 0,
+   "type": "Card Break"
+  },
+  {
+   "hidden": 0,
+   "is_query_report": 1,
+   "label": "Pacien\u021bi VIP",
+   "link_count": 0,
+   "link_to": "VIP Patients",
+   "link_type": "Report",
+   "onboard": 0,
+   "type": "Link"
+  },
+  {
+   "hidden": 0,
+   "is_query_report": 1,
+   "label": "Pacien\u021bi Fideli",
+   "link_count": 0,
+   "link_to": "Loyal Patients",
+   "link_type": "Report",
+   "onboard": 0,
+   "type": "Link"
+  },
+  {
+   "hidden": 0,
+   "is_query_report": 1,
+   "label": "Pacien\u021bi Inactivi (Reactivare)",
+   "link_count": 0,
+   "link_to": "Inactive Patients",
+   "link_type": "Report",
+   "onboard": 0,
+   "type": "Link"
+  },
+  {
+   "hidden": 0,
+   "is_query_report": 1,
+   "label": "Pacien\u021bi Neconverti\u021bi (Apel direct)",
+   "link_count": 0,
+   "link_to": "Unconverted Patients",
+   "link_type": "Report",
+   "onboard": 0,
+   "type": "Link"
+  },
+  {
+   "hidden": 0,
+   "is_query_report": 1,
+   "label": "Cump\u0103r\u0103tori noi (Follow-up)",
+   "link_count": 0,
+   "link_to": "New Buyers",
+   "link_type": "Report",
+   "onboard": 0,
+   "type": "Link"
+  },
+  {
+   "hidden": 0,
+   "is_query_report": 1,
+   "label": "Performan\u021b\u0103 operatori",
+   "link_count": 0,
+   "link_to": "Operator Performance",
+   "link_type": "Report",
+   "onboard": 0,
+   "type": "Link"
+  },
+  {
+   "hidden": 0,
+   "is_query_report": 1,
+   "label": "Istoric contact\u0103ri",
+   "link_count": 0,
+   "link_to": "Contact History",
+   "link_type": "Report",
+   "onboard": 0,
+   "type": "Link"
+  },
+  {
+   "hidden": 0,
+   "is_query_report": 0,
+   "label": "Configur\u0103ri",
+   "link_count": 1,
+   "link_type": "DocType",
+   "onboard": 0,
+   "type": "Card Break"
+  },
+  {
+   "hidden": 0,
+   "is_query_report": 0,
+   "label": "Optimed CRM Settings",
+   "link_count": 0,
+   "link_to": "Optimed CRM Settings",
+   "link_type": "DocType",
+   "onboard": 0,
+   "type": "Link"
   }
  ],
- "modified": "2026-05-02 16:45:24.193952",
+ "modified": "2026-05-09 14:57:05.356253",
  "modified_by": "Administrator",
  "module": "Optimed CRM",
  "name": "Optimed CRM",
- "number_cards": [
-  {
-   "label": "Total pacien\u021bi",
-   "number_card_name": "Total pacien\u021bi"
-  },
-  {
-   "label": "Pacien\u021bi activi (sub 1 an)",
-   "number_card_name": "Pacien\u021bi activi (sub 1 an)"
-  },
-  {
-   "label": "Program\u0103ri viitoare",
-   "number_card_name": "Program\u0103ri viitoare"
-  },
-  {
-   "label": "Deal-uri luna curent\u0103",
-   "number_card_name": "Deal-uri luna curent\u0103"
-  },
-  {
-   "label": "Venit total (RON)",
-   "number_card_name": "Venit total (RON)"
-  },
-  {
-   "label": "Venit luna curent\u0103 (RON)",
-   "number_card_name": "Venit luna curent\u0103 (RON)"
-  },
-  {
-   "label": "Comision total operatori (RON)",
-   "number_card_name": "Comision total operatori (RON)"
-  },
-  {
-   "label": "Manoper\u0103 total\u0103 (RON)",
-   "number_card_name": "Manoper\u0103 total\u0103 (RON)"
-  },
-  {
-   "label": "Pacien\u021bi de contactat azi",
-   "number_card_name": "Pacien\u021bi de contactat azi"
-  },
-  {
-   "label": "Pacien\u021bi inactivi (peste 365 zile)",
-   "number_card_name": "Pacien\u021bi inactivi (peste 365 zile)"
-  },
-  {
-   "label": "Pacien\u021bi VIP",
-   "number_card_name": "Pacien\u021bi VIP"
-  },
-  {
-   "label": "Rat\u0103 conversie (% pacien\u021bi cu deal)",
-   "number_card_name": "Rat\u0103 conversie (% pacien\u021bi cu deal)"
-  }
- ],
+ "number_cards": [],
  "owner": "Administrator",
  "public": 1,
  "quick_lists": [],
@@ -143,76 +208,14 @@
    "role": "Optimed Viewer"
   }
  ],
- "sequence_id": 50.0,
+ "sequence_id": 10.0,
  "shortcuts": [
   {
    "color": "Blue",
-   "doc_view": "List",
-   "label": "To\u021bi pacien\u021bii",
-   "link_to": "Patient",
-   "type": "DocType"
-  },
-  {
-   "color": "Green",
-   "doc_view": "List",
-   "label": "Toate deal-urile",
-   "link_to": "Deal",
-   "type": "DocType"
-  },
-  {
-   "color": "Orange",
-   "doc_view": "List",
-   "label": "Toate program\u0103rile",
-   "link_to": "Appointment",
-   "type": "DocType"
-  },
-  {
-   "color": "Purple",
    "doc_view": "",
-   "label": "Pacien\u021bi VIP",
-   "link_to": "VIP Patients",
-   "report_ref_doctype": "Patient",
-   "type": "Report"
-  },
-  {
-   "color": "Cyan",
-   "doc_view": "",
-   "label": "Pacien\u021bi Fideli",
-   "link_to": "Loyal Patients",
-   "report_ref_doctype": "Patient",
-   "type": "Report"
-  },
-  {
-   "color": "Green",
-   "doc_view": "",
-   "label": "Cump\u0103r\u0103tori noi",
-   "link_to": "New Buyers",
-   "report_ref_doctype": "Patient",
-   "type": "Report"
-  },
-  {
-   "color": "Red",
-   "doc_view": "",
-   "label": "Pacien\u021bi Inactivi (Reactivare)",
-   "link_to": "Inactive Patients",
-   "report_ref_doctype": "Patient",
-   "type": "Report"
-  },
-  {
-   "color": "Yellow",
-   "doc_view": "",
-   "label": "Pacien\u021bi Neconverti\u021bi (Apel direct)",
-   "link_to": "Unconverted Patients",
-   "report_ref_doctype": "Patient",
-   "type": "Report"
-  },
-  {
-   "color": "Pink",
-   "doc_view": "",
-   "label": "Performan\u021b\u0103 operatori",
-   "link_to": "Operator Performance",
-   "report_ref_doctype": "Deal",
-   "type": "Report"
+   "label": "Dashboard",
+   "link_to": "optimed-dashboard",
+   "type": "Page"
   },
   {
    "color": "Red",
@@ -220,6 +223,20 @@
    "label": "Contacte azi",
    "link_to": "contacts-today",
    "type": "Page"
+  },
+  {
+   "color": "Green",
+   "doc_view": "List",
+   "label": "Pacien\u021bi",
+   "link_to": "Patient",
+   "type": "DocType"
+  },
+  {
+   "color": "Yellow",
+   "doc_view": "List",
+   "label": "Deals",
+   "link_to": "Deal",
+   "type": "DocType"
   }
  ],
  "title": "Optimed CRM"

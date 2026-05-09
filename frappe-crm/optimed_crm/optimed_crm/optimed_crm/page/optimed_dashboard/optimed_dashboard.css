@@ -1,0 +1,560 @@
+/* Optimed Dashboard — stiluri custom (versiunea cu carduri clickabile + grafic anual + selector ani) */
+
+.optimed-dashboard {
+	padding: 24px 28px;
+	background: var(--gray-50, #f8f8f5);
+	min-height: 100vh;
+}
+
+/* Header cu greeting și data */
+.opt-dashboard-header {
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+	margin-bottom: 24px;
+	flex-wrap: wrap;
+	gap: 12px;
+}
+
+.opt-dashboard-header-left {
+	display: flex;
+	align-items: center;
+	gap: 16px;
+}
+
+.opt-logo-container {
+	width: 48px;
+	height: 48px;
+	border-radius: 8px;
+	background: var(--bg-light-gray, #e6f1fb);
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	font-weight: 500;
+	font-size: 16px;
+	color: #185fa5;
+	overflow: hidden;
+}
+
+.opt-logo-container img {
+	max-width: 100%;
+	max-height: 100%;
+	object-fit: contain;
+}
+
+.opt-greeting-text {
+	font-size: 13px;
+	color: var(--text-muted, #888);
+	margin: 0;
+}
+
+.opt-greeting-title {
+	font-size: 22px;
+	font-weight: 500;
+	margin: 2px 0 0;
+}
+
+.opt-dashboard-header-right {
+	display: flex;
+	align-items: center;
+	gap: 12px;
+}
+
+.opt-date-label {
+	font-size: 12px;
+	color: var(--text-muted, #888);
+}
+
+.opt-refresh-btn {
+	background: white;
+	border: 0.5px solid #e0e0e0;
+	border-radius: 6px;
+	padding: 6px 12px;
+	font-size: 12px;
+	cursor: pointer;
+	display: flex;
+	align-items: center;
+	gap: 6px;
+	transition: background 0.2s;
+}
+
+.opt-refresh-btn:hover {
+	background: #f0f0f0;
+}
+
+.opt-refresh-btn svg {
+	width: 12px;
+	height: 12px;
+}
+
+/* Loading state */
+.opt-loading {
+	text-align: center;
+	padding: 60px 20px;
+	color: #888;
+}
+
+.opt-loading svg {
+	width: 32px;
+	height: 32px;
+	animation: opt-spin 1s linear infinite;
+	margin-bottom: 12px;
+}
+
+@keyframes opt-spin {
+	from { transform: rotate(0deg); }
+	to { transform: rotate(360deg); }
+}
+
+/* Section title */
+.opt-section-title {
+	font-size: 13px;
+	color: var(--text-muted, #888);
+	font-weight: 500;
+	margin: 0 0 12px 0;
+}
+
+/* ============================================================ */
+/* SHORTCUT CARDS (cele 4 sus) */
+/* ============================================================ */
+.opt-shortcuts-grid {
+	display: grid;
+	grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+	gap: 12px;
+	margin-bottom: 28px;
+}
+
+.opt-shortcut-card {
+	background: white;
+	border-radius: 12px;
+	padding: 14px;
+	cursor: pointer;
+	border: 0.5px solid #e0e0e0;
+	transition: all 0.2s;
+	text-decoration: none;
+	color: inherit;
+	display: block;
+}
+
+.opt-shortcut-card:hover {
+	border-color: #999;
+	transform: translateY(-1px);
+	text-decoration: none;
+	color: inherit;
+	box-shadow: 0 2px 8px rgba(0,0,0,0.06);
+}
+
+.opt-shortcut-header {
+	display: flex;
+	align-items: center;
+	gap: 8px;
+	margin-bottom: 6px;
+}
+
+.opt-shortcut-icon {
+	width: 28px;
+	height: 28px;
+	border-radius: 6px;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+}
+
+.opt-shortcut-icon svg {
+	width: 14px;
+	height: 14px;
+}
+
+.opt-shortcut-label {
+	font-size: 12px;
+	font-weight: 500;
+}
+
+.opt-shortcut-value {
+	font-size: 22px;
+	font-weight: 500;
+	margin: 0;
+}
+
+.opt-shortcut-sublabel {
+	font-size: 11px;
+	color: var(--text-muted, #888);
+	margin-top: 2px;
+}
+
+/* ============================================================ */
+/* STAT CARDS (Performanță, Pacienți, Total) */
+/* ============================================================ */
+.opt-stats-grid {
+	display: grid;
+	gap: 12px;
+	margin-bottom: 12px;
+}
+
+.opt-stats-grid-3 {
+	grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+}
+
+.opt-stats-grid-4 {
+	grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+}
+
+.opt-stat-card {
+	background: #f1efe8;
+	border-radius: 8px;
+	padding: 12px;
+	transition: all 0.2s;
+}
+
+.opt-stat-card-link {
+	text-decoration: none;
+	color: inherit;
+	display: block;
+}
+
+.opt-stat-card-link:hover {
+	text-decoration: none;
+	color: inherit;
+}
+
+.opt-stat-card-clickable {
+	cursor: pointer;
+	border: 0.5px solid transparent;
+}
+
+.opt-stat-card-link:hover .opt-stat-card-clickable {
+	border-color: #999;
+	transform: translateY(-1px);
+	box-shadow: 0 2px 8px rgba(0,0,0,0.06);
+}
+
+.opt-stat-card-personal {
+	background: #eeedfe;
+	border: 0.5px solid #afa9ec;
+}
+
+.opt-stat-label {
+	font-size: 11px;
+	color: var(--text-muted, #666);
+	margin: 0 0 4px;
+}
+
+.opt-stat-card-personal .opt-stat-label {
+	color: #3c3489;
+	font-weight: 500;
+}
+
+.opt-stat-value {
+	font-size: 18px;
+	font-weight: 500;
+	margin: 0;
+}
+
+.opt-stat-card-personal .opt-stat-value {
+	color: #26215c;
+}
+
+.opt-stat-sublabel {
+	font-size: 10px;
+	color: var(--text-muted, #888);
+	margin: 2px 0 0;
+}
+
+.opt-stat-card-personal .opt-stat-sublabel {
+	color: #534ab7;
+}
+
+/* ============================================================ */
+/* STATUS COMISION BANNER */
+/* ============================================================ */
+.opt-commission-banner {
+	border-radius: 12px;
+	padding: 16px 20px;
+	margin-bottom: 28px;
+	border: 0.5px solid;
+}
+
+.opt-commission-banner.opt-status-amber {
+	background: #faeeda;
+	border-color: #ef9f27;
+	color: #412402;
+}
+
+.opt-commission-banner.opt-status-coral {
+	background: #faece7;
+	border-color: #f0997b;
+	color: #4a1b0c;
+}
+
+.opt-commission-banner.opt-status-green {
+	background: #eaf3de;
+	border-color: #97c459;
+	color: #173404;
+}
+
+.opt-commission-header {
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+	margin-bottom: 10px;
+	flex-wrap: wrap;
+	gap: 8px;
+}
+
+.opt-commission-title {
+	display: flex;
+	align-items: center;
+	gap: 10px;
+	font-size: 14px;
+	font-weight: 500;
+}
+
+.opt-commission-title svg {
+	width: 18px;
+	height: 18px;
+}
+
+.opt-commission-message {
+	font-size: 12px;
+	opacity: 0.85;
+}
+
+.opt-commission-progress-row {
+	display: flex;
+	align-items: baseline;
+	gap: 8px;
+	margin-bottom: 10px;
+	flex-wrap: wrap;
+}
+
+.opt-commission-current {
+	font-size: 24px;
+	font-weight: 500;
+}
+
+.opt-commission-target {
+	font-size: 14px;
+	opacity: 0.8;
+}
+
+.opt-commission-pct {
+	font-size: 13px;
+	font-weight: 500;
+	margin-left: auto;
+}
+
+.opt-progress-track {
+	background: rgba(0, 0, 0, 0.1);
+	border-radius: 999px;
+	height: 8px;
+	overflow: hidden;
+}
+
+.opt-progress-bar {
+	height: 100%;
+	border-radius: 999px;
+	transition: width 0.5s ease;
+}
+
+.opt-status-amber .opt-progress-bar { background: #ba7517; }
+.opt-status-coral .opt-progress-bar { background: #d85a30; }
+.opt-status-green .opt-progress-bar { background: #639922; }
+
+/* ============================================================ */
+/* CONVERSIE BOX */
+/* ============================================================ */
+.opt-conversion-box {
+	background: #e6f1fb;
+	border-radius: 8px;
+	padding: 18px;
+	text-align: center;
+	color: #185fa5;
+	transition: all 0.2s;
+}
+
+.opt-stat-card-link:hover .opt-conversion-box.opt-stat-card-clickable {
+	transform: translateY(-1px);
+	box-shadow: 0 2px 8px rgba(24, 95, 165, 0.15);
+}
+
+.opt-conversion-label {
+	font-size: 12px;
+	font-weight: 500;
+	margin: 0 0 6px;
+}
+
+.opt-conversion-value {
+	font-size: 32px;
+	font-weight: 500;
+	margin: 0;
+}
+
+/* Section spacing */
+.opt-section {
+	margin-bottom: 28px;
+}
+
+.opt-personal-section {
+	margin-bottom: 24px;
+}
+
+/* ============================================================ */
+/* GRAFIC ANUAL VENITURI (DOAR ADMIN) */
+/* ============================================================ */
+.opt-yearly-chart-section {
+	margin-bottom: 28px;
+}
+
+/* Header cu titlu + selector ani pe același rând */
+.opt-chart-header-row {
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+	flex-wrap: wrap;
+	gap: 12px;
+	margin-bottom: 12px;
+}
+
+.opt-year-selector-wrapper {
+	display: flex;
+	align-items: center;
+	gap: 8px;
+}
+
+.opt-year-selector-label {
+	font-size: 12px;
+	color: var(--text-muted, #666);
+	margin: 0;
+}
+
+.opt-year-selector {
+	padding: 5px 28px 5px 10px;
+	font-size: 13px;
+	font-weight: 500;
+	border: 0.5px solid #e0e0e0;
+	border-radius: 6px;
+	background-color: white;
+	background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 24 24' fill='none' stroke='%23666' stroke-width='2'%3E%3Cpath d='M6 9l6 6 6-6'/%3E%3C/svg%3E");
+	background-repeat: no-repeat;
+	background-position: right 8px center;
+	-webkit-appearance: none;
+	-moz-appearance: none;
+	appearance: none;
+	cursor: pointer;
+	min-width: 80px;
+	color: var(--text-primary, #1f1f1f);
+	transition: border-color 0.2s;
+}
+
+.opt-year-selector:hover {
+	border-color: #999;
+}
+
+.opt-year-selector:focus {
+	outline: none;
+	border-color: #185fa5;
+	box-shadow: 0 0 0 2px rgba(24, 95, 165, 0.1);
+}
+
+.opt-chart-container {
+	background: white;
+	border-radius: 12px;
+	padding: 20px;
+	border: 0.5px solid #e0e0e0;
+}
+
+.opt-chart-legend {
+	display: flex;
+	flex-wrap: wrap;
+	gap: 16px;
+	margin-bottom: 16px;
+	font-size: 12px;
+	color: var(--text-muted, #666);
+}
+
+.opt-chart-legend-item {
+	display: flex;
+	align-items: center;
+	gap: 6px;
+}
+
+.opt-chart-legend-color {
+	display: inline-block;
+	width: 12px;
+	height: 12px;
+	border-radius: 2px;
+}
+
+.opt-chart-legend-line {
+	display: inline-block;
+	width: 16px;
+	height: 0;
+	border-top: 2px dashed #d85a30;
+	margin-right: 0;
+}
+
+.opt-chart-canvas-wrapper {
+	position: relative;
+	width: 100%;
+	height: 320px;
+	margin-bottom: 16px;
+}
+
+.opt-chart-stats {
+	display: grid;
+	grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+	gap: 12px;
+	padding-top: 16px;
+	border-top: 0.5px solid #e0e0e0;
+}
+
+.opt-chart-stat {
+	padding: 0 4px;
+}
+
+.opt-chart-stat-label {
+	font-size: 11px;
+	color: var(--text-muted, #666);
+	margin: 0 0 4px;
+}
+
+.opt-chart-stat-value {
+	font-size: 18px;
+	font-weight: 500;
+	margin: 0;
+}
+
+.opt-chart-stat-sublabel {
+	font-size: 10px;
+	color: var(--text-muted, #888);
+	margin: 2px 0 0;
+}
+
+/* ============================================================ */
+/* MOBILE RESPONSIVE */
+/* ============================================================ */
+@media (max-width: 768px) {
+	.optimed-dashboard {
+		padding: 16px;
+	}
+	.opt-shortcuts-grid {
+		grid-template-columns: repeat(2, 1fr);
+	}
+	.opt-stats-grid-3,
+	.opt-stats-grid-4 {
+		grid-template-columns: repeat(2, 1fr);
+	}
+	.opt-chart-canvas-wrapper {
+		height: 260px;
+	}
+	.opt-chart-stats {
+		grid-template-columns: repeat(2, 1fr);
+	}
+	.opt-chart-legend {
+		font-size: 11px;
+	}
+	.opt-chart-header-row {
+		flex-direction: column;
+		align-items: flex-start;
+	}
+}

@@ -1,0 +1,159 @@
+{
+ "actions": [],
+ "allow_rename": 0,
+ "creation": "2026-05-03 00:00:00.000000",
+ "doctype": "DocType",
+ "engine": "InnoDB",
+ "field_order": [
+  "section_commission",
+  "commission_threshold",
+  "column_break_commission",
+  "commission_warning_threshold_percent",
+  "commission_critical_threshold_percent",
+  "section_yearly_thresholds",
+  "yearly_thresholds_html",
+  "yearly_thresholds",
+  "section_dashboard",
+  "show_top_operator_to_admin_only",
+  "column_break_dashboard",
+  "show_total_section_to_admin_only",
+  "section_branding",
+  "company_name",
+  "column_break_branding",
+  "greeting_text"
+ ],
+ "fields": [
+  {
+   "fieldname": "section_commission",
+   "fieldtype": "Section Break",
+   "label": "Comision operatori"
+  },
+  {
+   "default": "75000",
+   "description": "Pragul minim de venit lunar al firmei pentru a debloca comisionul operatorilor (RON).",
+   "fieldname": "commission_threshold",
+   "fieldtype": "Currency",
+   "label": "Prag comision lunar (RON)",
+   "non_negative": 1,
+   "options": "RON",
+   "reqd": 1
+  },
+  {
+   "fieldname": "column_break_commission",
+   "fieldtype": "Column Break"
+  },
+  {
+   "default": "70",
+   "description": "Sub acest procent, statusul devine portocaliu (alertă).",
+   "fieldname": "commission_warning_threshold_percent",
+   "fieldtype": "Percent",
+   "label": "Prag avertisment %",
+   "non_negative": 1,
+   "reqd": 1
+  },
+  {
+   "default": "100",
+   "description": "Peste acest procent, statusul devine verde (deblocat).",
+   "fieldname": "commission_critical_threshold_percent",
+   "fieldtype": "Percent",
+   "label": "Prag debloc. %",
+   "non_negative": 1,
+   "reqd": 1
+  },
+  {
+   "fieldname": "section_yearly_thresholds",
+   "fieldtype": "Section Break",
+   "label": "Praguri pe an (override pragul global)"
+  },
+  {
+   "fieldname": "yearly_thresholds_html",
+   "fieldtype": "HTML",
+   "options": "<p style=\"color: #6b6b6b; margin: 0 0 10px 0;\">Definește praguri specifice pentru ani anteriori. Dacă un an nu e setat aici, se folosește <b>pragul global</b> de mai sus ca fallback.</p>"
+  },
+  {
+   "fieldname": "yearly_thresholds",
+   "fieldtype": "Table",
+   "label": "Praguri pe an",
+   "options": "Optimed CRM Yearly Threshold"
+  },
+  {
+   "fieldname": "section_dashboard",
+   "fieldtype": "Section Break",
+   "label": "Vizibilitate Dashboard"
+  },
+  {
+   "default": "1",
+   "description": "Dacă e bifat, doar System Manager vede 'Top operator' în Performanța firmei.",
+   "fieldname": "show_top_operator_to_admin_only",
+   "fieldtype": "Check",
+   "label": "Top operator vizibil doar pentru admin"
+  },
+  {
+   "fieldname": "column_break_dashboard",
+   "fieldtype": "Column Break"
+  },
+  {
+   "default": "1",
+   "description": "Dacă e bifat, doar System Manager vede secțiunea Total din Dashboard.",
+   "fieldname": "show_total_section_to_admin_only",
+   "fieldtype": "Check",
+   "label": "Secțiunea Total vizibilă doar pentru admin"
+  },
+  {
+   "fieldname": "section_branding",
+   "fieldtype": "Section Break",
+   "label": "Branding"
+  },
+  {
+   "default": "Optimed Toplița",
+   "fieldname": "company_name",
+   "fieldtype": "Data",
+   "label": "Numele firmei"
+  },
+  {
+   "fieldname": "column_break_branding",
+   "fieldtype": "Column Break"
+  },
+  {
+   "default": "Bună dimineața",
+   "description": "Salutul afișat sus în Dashboard.",
+   "fieldname": "greeting_text",
+   "fieldtype": "Data",
+   "label": "Text salut"
+  }
+ ],
+ "index_web_pages_for_search": 0,
+ "issingle": 1,
+ "links": [],
+ "modified": "2026-05-03 00:00:00.000000",
+ "modified_by": "Administrator",
+ "module": "Optimed CRM",
+ "name": "Optimed CRM Settings",
+ "owner": "Administrator",
+ "permissions": [
+  {
+   "create": 1,
+   "delete": 0,
+   "email": 1,
+   "export": 1,
+   "print": 1,
+   "read": 1,
+   "report": 0,
+   "role": "System Manager",
+   "share": 1,
+   "write": 1
+  },
+  {
+   "read": 1,
+   "role": "Optimed Operator"
+  },
+  {
+   "read": 1,
+   "role": "Optimed Viewer"
+  }
+ ],
+ "sort_field": "modified",
+ "sort_order": "DESC",
+ "states": [],
+ "track_changes": 1
+}

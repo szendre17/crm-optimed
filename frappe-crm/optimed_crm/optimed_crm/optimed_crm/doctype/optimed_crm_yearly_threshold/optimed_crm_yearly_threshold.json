@@ -1,0 +1,41 @@
+{
+ "actions": [],
+ "creation": "2026-05-09 00:00:00",
+ "doctype": "DocType",
+ "editable_grid": 1,
+ "engine": "InnoDB",
+ "field_order": [
+  "year",
+  "threshold"
+ ],
+ "fields": [
+  {
+   "fieldname": "year",
+   "fieldtype": "Int",
+   "in_list_view": 1,
+   "label": "An",
+   "reqd": 1,
+   "columns": 4
+  },
+  {
+   "fieldname": "threshold",
+   "fieldtype": "Currency",
+   "in_list_view": 1,
+   "label": "Prag (RON)",
+   "options": "RON",
+   "reqd": 1,
+   "columns": 6
+  }
+ ],
+ "istable": 1,
+ "links": [],
+ "modified": "2026-05-09 00:00:00",
+ "modified_by": "Administrator",
+ "module": "Optimed CRM",
+ "name": "Optimed CRM Yearly Threshold",
+ "owner": "Administrator",
+ "permissions": [],
+ "sort_field": "modified",
+ "sort_order": "DESC",
+ "states": []
+}

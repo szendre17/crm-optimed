@@ -1,8 +1,38 @@
-// Optimed CRM — interceptează click pe Number Card "Pacienți de contactat azi"
-// și redirecționează către pagina contacts-today (în loc de lista filtrată Patient).
-//
-// Frappe Number Cards merg by default la /app/{doctype} cu filtre,
-// dar pentru acest card vrem o pagină custom de acțiune.
+// Optimed CRM — overrides UI:
+// 1. Workspace /app/optimed-crm → redirect automat la /app/optimed-dashboard
+// 2. Click pe Number Card "Pacienți de contactat azi" → /app/contacts-today
+
+console.log("[Optimed] JS loaded at", new Date().toISOString());
+
+// =========================================================
+// PARTEA 1: Redirect workspace
+// =========================================================
+
+(function pollAndRedirect() {
+	try {
+		if (window.frappe && frappe.get_route) {
+			const route = frappe.get_route();
+			if (
+				route &&
+				route.length >= 2 &&
+				(route[0] === "Workspaces" || route[0] === "workspace") &&
+				(route[1] === "Optimed CRM" || route[1] === "optimed-crm")
+			) {
+				console.log("[Optimed] Workspace detected, redirecting to dashboard. Route was:", route);
+				frappe.set_route("optimed-dashboard");
+				return; // stop polling după redirect reușit
+			}
+		}
+	} catch (e) {
+		console.error("[Optimed] Redirect check error:", e);
+	}
+	// Polling continuu — capturăm și navigările ulterioare la workspace
+	setTimeout(pollAndRedirect, 500);
+})();
+
+// =========================================================
+// PARTEA 2: Override Number Card "Pacienți de contactat azi"
+// =========================================================
 
 (function () {
 	"use strict";
@@ -11,15 +41,11 @@
 	const TARGET_ROUTE = "contacts-today";
 
 	function attachInterceptor() {
-		// Caută toate widget-urile de tip Number Card
 		document.querySelectorAll(".widget.number-widget-box, .widget.number-card").forEach(function (el) {
 			if (el.dataset.optimedHookAttached === "1") return;
-
-			// Detect label (titlul cardului)
 			const labelEl = el.querySelector(".widget-title, .number-label, .widget-head-text");
 			if (!labelEl) return;
 			const label = labelEl.textContent.trim();
-
 			if (label === TARGET_LABEL) {
 				el.dataset.optimedHookAttached = "1";
 				el.style.cursor = "pointer";
@@ -32,19 +58,14 @@
 					} else {
 						window.location.href = "/app/" + TARGET_ROUTE;
 					}
-				}, true); // capture phase — rulează înaintea handler-ului default
+				}, true);
 			}
 		});
 	}
 
-	// Atașează la pornirea aplicației + la fiecare schimbare de rută (workspace re-render)
 	function init() {
 		attachInterceptor();
-
-		// Re-rulează la fiecare 2 sec (workspace-ul se poate re-render)
 		setInterval(attachInterceptor, 2000);
-
-		// Hook explicit pentru route changes
 		if (window.frappe && frappe.router && frappe.router.on) {
 			frappe.router.on("change", function () {
 				setTimeout(attachInterceptor, 500);
@@ -52,7 +73,6 @@
 		}
 	}
 
-	// Așteaptă DOM ready + Frappe ready
 	if (document.readyState === "loading") {
 		document.addEventListener("DOMContentLoaded", init);
 	} else {
